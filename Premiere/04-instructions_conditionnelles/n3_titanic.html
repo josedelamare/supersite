@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Instructions conditionnelles en Python - Quelle chance de survie pour un passager du Titanic ?</title>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@1.11.3/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/trinketapp/skulpt-dist@0.11.1.19/skulpt.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/trinketapp/skulpt-dist@0.11.1.19/skulpt-stdlib.js"></script>
+	<link  href="https://cdn.jsdelivr.net/npm/codemirror@5.33.0/lib/codemirror.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.33.0/lib/codemirror.js"></script> 
+	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.33.0/mode/python/python.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+	<script src="https://cdn.jsdelivr.net/gh/diraison/GenPyExo/verifpyexo.js"></script>
+	<link  href="https://cdn.jsdelivr.net/gh/diraison/GenPyExo/misc/style.css" rel="stylesheet">
+</head>
+<body onload="genererReponses()">
+<header><h1>Instructions conditionnelles en Python</h1></header>
+<article>
+	<h2>Quelle chance de survie pour un passager du Titanic ?</h2>
+	<div class="enonce">Le but de cet exercice consiste à créer un modèle simpliste de prédiction de la chance de survie d’un passager du Titanic suite à son naufrage. La survie d'un passager dépend de 5 critères : 
+<ul>
+<li>le genre du passager : 0 pour homme et 1 pour femme ;  </li>
+<li>l’âge du passager : un entier positif ;  </li>
+<li>la classe du voyage du passager : 1, 2 ou 3 ;  </li>
+<li>le prix du ticket du voyage en £ : un flottant ;  </li>
+<li>le numéro de cabine : un entier entre 0 et 762.  </li>
+</ul>
+
+On considère qu’un passager a plus de chances de survivre si :
+<ol>
+<li>c’est une femme ;  </li>
+<li>il est mineur (<18 ans) ou sénior (≥60 ans) ; </li>
+<li>il voyage en classe 1 ou 2 ;  </li>
+<li>le prix du ticket est au moins de 10, 35 £ (inclus) ;</li>
+<li>son numéro de cabine est pair et multiple de sept.</li>
+</ol>
+
+On veut déterminer à quel point un passage correspond aux cinq critères. Il faut tester tous les critères. S’ils sont tous vérifiés, il faut afficher la chaîne de caractères "Très probable". Si seulement trois ou quatre critères sont vérifiés, il faut afficher "Probable". Si aucun critère n’est vérifié il faut afficher "Quasiment impossible" et dans les autres cas, il faut afficher "Peu probable".
+
+Complétez le programme pour qu'il affiche la probabilité de survie du passager.
+
+</div>
+	<br>
+	<div class="travail" id="travail">
+		<textarea id="code">
+
+sexe = int(input("quel est votre sexe ? 0 pour un homme et 1 pour une femme"))
+age = int( input("quel est votre âge ? "))
+classe = int(input("dans quelle classe voyagez-vous ?"))
+tarif = float(input("combien avez-vous payé votre billet ?"))
+cabine = int(input("quel est le numéro de votre cabine ?"))
+
+criteres = 0
+
+if sexe == 1:
+	criteres = criteres + 1 
+	
+		#plein de lignes à compléter
+	
+if probabilite
+		#plein de lignes à compléter
+				
+print(probabilite)</textarea>
+		<pre id="erreur"></pre>
+		<button type="button" onclick="executer()" id="execfb" disabled>Exécuter</button> 
+		<button type="button" onclick="verifier()" id="verifb" style="float: right; right: 3%;" disabled>Vérifier la réponse</button> 
+	</div>
+	<div class="reponses" id="resultat" style="visibility:hidden">
+		<pre id="sortie"></pre>
+		<div id="dessin"></div>
+	</div>
+	<pre id="solution" style="display:none"># Solution de l'exercice
+
+sexe = int(input("quel est votre sexe ? 0 pour un homme et 1 pour une femme"))
+age = int( input("quel est votre âge ? "))
+classe = int(input("dans quelle classe voyagez-vous ?"))
+tarif = float(input("combien avez-vous payé votre billet ?"))
+cabine = int(input("quel est le numéro de votre cabine ?"))
+
+criteres = 0
+
+if sexe == 1:
+	criteres = criteres + 1 
+if age >= 60 or age < 18:
+	criteres = criteres + 1 
+if classe == 1 or classe == 2:
+	criteres = criteres + 1 
+if tarif >= 10.35:
+	criteres = criteres + 1 
+if cabine%2 == 0 and cabine%7 == 0:
+	criteres = criteres + 1 
+	
+if criteres == 5:
+	probabilite = "Très probable"
+elif criteres == 3 or criteres == 4:
+	probabilite = "Probable"
+elif criteres == 0:
+	probabilite = "Quasiment impossible"
+else:
+	probabilite = "Peu probable"
+				
+print(probabilite)
+	
+
+</pre>
+</article>
+<script>
+alltests = [ [1, 60, 1, 11, 14, ""],
+  [0, 60, 1, 11, 14, ""],
+  [1, 19, 1, 11, 14, ""],
+  [1, 18, 1, 11, 14, ""],
+  [0, 60, 2, 11, 14, ""],
+  [1, 60, 1, 10, 14, ""],
+  [1, 60, 1, 11, 12, ""],
+  [1, 60, 1, 10, 12, ""],
+  [0, 60, 1, 11, 12, ""],
+  [1, 59, 3, 11, 14, ""],
+  [1, 18, 3, 11, 14, ""],
+  [0, 59, 3, 11, 14, ""],
+  [1, 59, 1, 10, 12, ""]
+  ];
+CodeMirror.keyMap.default.Tab = function(cm) { cm.execCommand(cm.getOption("indentWithTabs") ? "insertTab" : "insertSoftTab"); };
+editeur = CodeMirror.fromTextArea(document.getElementById("code"), { mode: "python", lineNumbers: true, indentWithTabs: false, indentUnit: 4, tabSize: 4 });
+var hauteurEditeur = document.documentElement.clientHeight - document.getElementById("travail").offsetTop - 110;
+editeur.setSize(null, hauteurEditeur === undefined ? 370 : hauteurEditeur);
+</script>
+</body>
+</html>
+

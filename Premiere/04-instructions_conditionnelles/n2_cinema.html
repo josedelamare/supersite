@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Instructions conditionnelles en Python - Tirage de photos</title>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@1.11.3/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/trinketapp/skulpt-dist@0.11.1.19/skulpt.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/trinketapp/skulpt-dist@0.11.1.19/skulpt-stdlib.js"></script>
+	<link  href="https://cdn.jsdelivr.net/npm/codemirror@5.33.0/lib/codemirror.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.33.0/lib/codemirror.js"></script> 
+	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.33.0/mode/python/python.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+	<script src="https://cdn.jsdelivr.net/gh/diraison/GenPyExo/verifpyexo.js"></script>
+	<link  href="https://cdn.jsdelivr.net/gh/diraison/GenPyExo/misc/style.css" rel="stylesheet">
+</head>
+<body onload="genererReponses()">
+<header><h1>Instructions conditionnelles en Python</h1></header>
+<article>
+	<h2>Tirage de photos</h2>
+	<div class="enonce">Un cinéma propose des places à 9 euros l'unité pour un adulte. Par ailleurs, il offre une réduction de 40 % pour les moins de 13 ans et une réduction de 30 % pour les seniors âgés de 65 ans ou plus. 
+
+Complétez le programme pour qu'il affiche le prix à payer suivant l'âge du client.
+
+</div>
+	<br>
+	<div class="travail" id="travail">
+		<textarea id="code">age = int( input("quel est votre âge ? ") )
+
+if 		#2 lignes à compléter
+	prix =     
+elif 	#2 lignes à compléter
+
+else:
+				#1 ligne à compléter
+				
+print(prix)</textarea>
+		<pre id="erreur"></pre>
+		<button type="button" onclick="executer()" id="execfb" disabled>Exécuter</button> 
+		<button type="button" onclick="verifier()" id="verifb" style="float: right; right: 3%;" disabled>Vérifier la réponse</button> 
+	</div>
+	<div class="reponses" id="resultat" style="visibility:hidden">
+		<pre id="sortie"></pre>
+		<div id="dessin"></div>
+	</div>
+	<pre id="solution" style="display:none"># Solution de l'exercice
+
+age = int( input("quel est votre âge ? ") )
+
+if age >= 65:
+    prix = 9 * 70/100
+elif age < 13:
+	prix = 9 * 60/100
+else:
+	prix = 9
+				
+print(prix)
+	
+
+</pre>
+</article>
+<script>
+alltests = [ [0, ""],
+  [10, ""],
+  [12, ""],
+  [13, ""],
+  [14, ""],
+  [20, ""],
+  [64, ""],
+  [65, ""],
+  [66, ""]
+  ];
+CodeMirror.keyMap.default.Tab = function(cm) { cm.execCommand(cm.getOption("indentWithTabs") ? "insertTab" : "insertSoftTab"); };
+editeur = CodeMirror.fromTextArea(document.getElementById("code"), { mode: "python", lineNumbers: true, indentWithTabs: false, indentUnit: 4, tabSize: 4 });
+var hauteurEditeur = document.documentElement.clientHeight - document.getElementById("travail").offsetTop - 110;
+editeur.setSize(null, hauteurEditeur === undefined ? 370 : hauteurEditeur);
+</script>
+</body>
+</html>
+
