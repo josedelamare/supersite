@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Instructions conditionnelles en Python - Fonction définie par partie</title>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@1.11.3/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/trinketapp/skulpt-dist@0.11.1.19/skulpt.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/trinketapp/skulpt-dist@0.11.1.19/skulpt-stdlib.js"></script>
+	<link  href="https://cdn.jsdelivr.net/npm/codemirror@5.33.0/lib/codemirror.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.33.0/lib/codemirror.js"></script> 
+	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.33.0/mode/python/python.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+	<script src="https://cdn.jsdelivr.net/gh/diraison/GenPyExo/verifpyexo.js"></script>
+	<link  href="https://cdn.jsdelivr.net/gh/diraison/GenPyExo/misc/style.css" rel="stylesheet">
+</head>
+<body onload="genererReponses()">
+<header><h1>Instructions conditionnelles en Python</h1></header>
+<article>
+	<h2>Fonction définie par partie</h2>
+	<div class="enonce">Complétez le programme pour qu'il affiche :
+<ul>
+	<li>\(x\) si \(x < 0\)	</li>
+	<li>\(x^2 - 1\) si \(0 \leqslant x < 1\)	</li>
+	<li>\(x + 5\) si \(x \geqslant 1\)	</li>
+</ul>
+
+</div>
+	<br>
+	<div class="travail" id="travail">
+		<textarea id="code">x = float( input("x ? ") )
+
+if x  			#ligne à compléter
+    y =  		#ligne à compléter
+elif  			#ligne à compléter
+    y =  		#ligne à compléter
+else:
+	y =  		#ligne à compléter
+	
+print("y = ", y)
+
+</textarea>
+		<pre id="erreur"></pre>
+		<button type="button" onclick="executer()" id="execfb" disabled>Exécuter</button> 
+		<button type="button" onclick="verifier()" id="verifb" style="float: right; right: 3%;" disabled>Vérifier la réponse</button> 
+	</div>
+	<div class="reponses" id="resultat" style="visibility:hidden">
+		<pre id="sortie"></pre>
+		<div id="dessin"></div>
+	</div>
+	<pre id="solution" style="display:none"># Solution de l'exercice
+
+x = float( input("x ? ") )
+
+if x < 0:
+    y = x
+elif 0 <= x < 1:
+    y = x**2 - 1
+else:
+	y = x + 5
+	
+print("y = ", y)
+
+</pre>
+</article>
+<script>
+alltests = [ [0, ""],
+  [1, ""],
+  [0.9, ""],
+  [1.1, ""],
+  [-0.1, ""],
+  [-5, ""]
+  ];
+CodeMirror.keyMap.default.Tab = function(cm) { cm.execCommand(cm.getOption("indentWithTabs") ? "insertTab" : "insertSoftTab"); };
+editeur = CodeMirror.fromTextArea(document.getElementById("code"), { mode: "python", lineNumbers: true, indentWithTabs: false, indentUnit: 4, tabSize: 4 });
+var hauteurEditeur = document.documentElement.clientHeight - document.getElementById("travail").offsetTop - 110;
+editeur.setSize(null, hauteurEditeur === undefined ? 370 : hauteurEditeur);
+</script>
+</body>
+</html>
+

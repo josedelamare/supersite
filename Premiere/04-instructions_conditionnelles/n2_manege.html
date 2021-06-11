@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Instructions conditionnelles en Python - Est-ce que je peux monter sur le manège ?</title>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@1.11.3/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/trinketapp/skulpt-dist@0.11.1.19/skulpt.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/trinketapp/skulpt-dist@0.11.1.19/skulpt-stdlib.js"></script>
+	<link  href="https://cdn.jsdelivr.net/npm/codemirror@5.33.0/lib/codemirror.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.33.0/lib/codemirror.js"></script> 
+	<script src="https://cdn.jsdelivr.net/npm/codemirror@5.33.0/mode/python/python.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+	<script src="https://cdn.jsdelivr.net/gh/diraison/GenPyExo/verifpyexo.js"></script>
+	<link  href="https://cdn.jsdelivr.net/gh/diraison/GenPyExo/misc/style.css" rel="stylesheet">
+</head>
+<body onload="genererReponses()">
+<header><h1>Instructions conditionnelles en Python</h1></header>
+<article>
+	<h2>Est-ce que je peux monter sur le manège ?</h2>
+	<div class="enonce">Pour monter sur le manège, il faut avoir plus de 11 ans et peser au moins 45 kg.
+Complétez le programme pour qu'il affiche le message "Manège autorisé", ou bien "vous êtes trop jeune" ou "vous n'êtes pas assez lourd".
+
+</div>
+	<br>
+	<div class="travail" id="travail">
+		<textarea id="code">age = int( input("age ? ") )
+poids = float( input("poids ? ") )
+
+if 				#2 lignes à compléter
+	reponse = 
+elif 			#2 lignes à compléter
+    
+else:
+				#1 ligne à compléter
+	
+print(reponse)</textarea>
+		<pre id="erreur"></pre>
+		<button type="button" onclick="executer()" id="execfb" disabled>Exécuter</button> 
+		<button type="button" onclick="verifier()" id="verifb" style="float: right; right: 3%;" disabled>Vérifier la réponse</button> 
+	</div>
+	<div class="reponses" id="resultat" style="visibility:hidden">
+		<pre id="sortie"></pre>
+		<div id="dessin"></div>
+	</div>
+	<pre id="solution" style="display:none"># Solution de l'exercice
+
+age = int( input("age ? ") )
+poids = float( input("poids ? ") )
+
+if age > 11 and poids >= 45:
+   reponse = "Manège autorisé"
+elif age <= 11 and poids >= 45:
+   reponse = "vous êtes trop jeune"
+else:
+	reponse = "vous n'êtes pas assez lourd"
+	
+print(reponse)
+	
+
+</pre>
+</article>
+<script>
+alltests = [ [10, 44, ""],
+  [10, 45, ""],
+  [10, 45, ""],
+  [11, 44, ""],
+  [11, 45, ""],
+  [11, 45, ""],
+  [12, 44, ""],
+  [12, 45, ""],
+  [12, 45, ""]
+  ];
+CodeMirror.keyMap.default.Tab = function(cm) { cm.execCommand(cm.getOption("indentWithTabs") ? "insertTab" : "insertSoftTab"); };
+editeur = CodeMirror.fromTextArea(document.getElementById("code"), { mode: "python", lineNumbers: true, indentWithTabs: false, indentUnit: 4, tabSize: 4 });
+var hauteurEditeur = document.documentElement.clientHeight - document.getElementById("travail").offsetTop - 110;
+editeur.setSize(null, hauteurEditeur === undefined ? 370 : hauteurEditeur);
+</script>
+</body>
+</html>
+
